@@ -1,0 +1,887 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet" xmlns:html="http://www.w3.org/TR/REC-html40" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+   <Styles>
+      <Style ss:ID="Default" ss:Name="Normal">
+         <Alignment ss:Vertical="Bottom" />
+         <Borders />
+         <Font />
+         <Interior />
+         <NumberFormat />
+         <Protection />
+      </Style>
+      <Style ss:ID="s16" ss:Name="Comma">
+         <NumberFormat ss:Format="_(* #,##0.00_);_(* \(#,##0.00\);_(* &quot;-&quot;??_);_(@_)" />
+      </Style>
+      <Style ss:ID="s20">
+         <Alignment ss:Horizontal="Center" ss:Vertical="Bottom" />
+         <Font ss:Bold="0" />
+      </Style>
+      <Style ss:ID="s21">
+         <Alignment ss:Horizontal="Center" ss:Vertical="Bottom" />
+         <Font ss:Bold="1" />
+      </Style>
+      <Style ss:ID="s22">
+         <NumberFormat ss:Format="Fixed" />
+      </Style>
+      <Style ss:ID="s24" ss:Parent="s16">
+         <NumberFormat ss:Format="_(* #,##0_);_(* \(#,##0\);_(* &quot;-&quot;??_);_(@_)" />
+      </Style>
+      <Style ss:ID="s25">
+         <NumberFormat />
+      </Style>
+      <Style ss:ID="s31">
+         <Alignment ss:Vertical="Bottom" ss:WrapText="1" />
+         <Font ss:Bold="1" />
+      </Style>
+      <Style ss:ID="s34">
+         <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1" />
+         <Font ss:Bold="1" />
+      </Style>
+      <Style ss:ID="s35">
+         <Alignment ss:Horizontal="Right" ss:Vertical="Center" ss:WrapText="1" />
+         <Font ss:Bold="1" />
+      </Style>
+      <Style ss:ID="s36">
+         <Alignment ss:Horizontal="Center" ss:Vertical="Center" ss:WrapText="1" />
+         <Font ss:Bold="1" />
+      </Style>
+      <Style ss:ID="s62nw">
+         <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="0" />
+         <Font ss:FontName="Arial" />
+      </Style>
+      <Style ss:ID="s62">
+         <Alignment ss:Horizontal="Left" ss:Vertical="Center" ss:WrapText="1" />
+         <Font ss:FontName="Arial" />
+      </Style>
+      <Style ss:ID="Date">
+         <NumberFormat ss:Format="MMM-yyyy" />
+      </Style>
+   </Styles>
+   <Worksheet ss:Name="MetaData">
+      <Table>
+         <Column ss:Width="200" />
+         <Column ss:Width="140" />
+         <Column ss:Width="220" />
+         <Column ss:Width="400" />
+         <Column ss:Width="250" />
+         <Row ss:AutoFitHeight="0" ss:Height="38.25">
+            <Cell ss:MergeAcross="5" ss:StyleID="s36">
+               <Data ss:Type="String">
+                 Metadata for Seasonally Adjusted Transportation Data
+              </Data>
+            </Cell>
+         </Row>
+         <Row>
+            <Cell ss:StyleID="s36">
+               <Data ss:Type="String">Column Name</Data>
+            </Cell>
+            <Cell ss:StyleID="s36">
+               <Data ss:Type="String">Data Type</Data>
+            </Cell>
+            <Cell ss:StyleID="s36">
+               <Data ss:Type="String">Description</Data>
+            </Cell>
+            <Cell ss:StyleID="s36">
+               <Data ss:Type="String">Source</Data>
+            </Cell>
+            <Cell ss:StyleID="s36">
+               <Data ss:Type="String">Notes</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">OBS_DATE</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">date</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Observation Date ( Month and Year)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">TRANSIT</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Public Transit Ridership (Thousands Of Unlinked Trips) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">American Public Transportation Association (APTA) data (2000 through 2009) available at: http://www.apta.com/resources/statistics/Pages/ridershipreport.aspx and U.S. Department of Transportation, Federal Transit Administration, National Transit Database (2010 to present) available at: http://www.ntdprogram.gov/ntdprogram/data.htm </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">TRANSIT_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Public Transit Ridership (Thousands Of Unlinked Trips) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from American Public Transportation Association (APTA) data (2000 through 2009) available at: http://www.apta.com/resources/statistics/Pages/ridershipreport.aspx and U.S. Department of Transportation, Federal Transit Administration, National Transit Database (2010 to present) available at: http://www.ntdprogram.gov/ntdprogram/data.htm </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Available Seat Miles (ASMs) for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Available Seat Miles (ASMs) for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Revenue Passenger Miles (RPMs) for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Revenue Passenger Miles (RPMs) for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Load Factor for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Load Factor for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE_I</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Enplanements for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE_I_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Enplanements for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE_D</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Enplanements for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE_D_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Enplanements for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Enplanements for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ENPLANE_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Enplanements for U.S. Air Carrier Domestic and International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic and international, scheduled passenger flights  
+</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">AIR_RPM_TSI</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Air Revenue Passenger Miles (RPMs) (Thousands)  </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), Office of Airline Information, T-1 data</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">AIR_RPM_TSI_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Air Revenue Passenger Miles (RPMs) (Thousands)  </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">AIR_RTMFM</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Air Revenue Ton Miles Of Freight And Mail (RTMFM) (Ton Miles) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), Office of Airline Information, T-1 data</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">AIR_RTMFM_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Air Revenue Ton Miles Of Freight And Mail (RTMFM) (Ton Miles) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_FRT_CARLOADS</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Rail Freight Carloads</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Association of American Railroads</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Monthly rail carloads and intermodals are estimated by dividing the weekly sum by 7 (7 days in a week) and then summing for the number of days in the month (31 days for May, 30 days for June, etc.)</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_FRT_CARLOADS_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Rail Freight Carloads </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from data collected by Association of American Railroads</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Monthly rail carloads and intermodals are estimated by dividing the weekly sum by 7 (7 days in a week) and then summing for the number of days in the month (31 days for May, 30 days for June, etc.)</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_FRT_INTERMODAL</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Rail Freight Intermodal Traffic</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Association of American Railroads</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Monthly rail carloads and intermodals are estimated by dividing the weekly sum by 7 (7 days in a week) and then summing for the number of days in the month (31 days for May, 30 days for June, etc.)</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_FRT_INTERMODAL_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Rail Freight Intermodal Traffic </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from data collected by Association of American Railroads</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Monthly rail carloads and intermodals are estimated by dividing the weekly sum by 7 (7 days in a week) and then summing for the number of days in the month (31 days for May, 30 days for June, etc.)</Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_PM</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Rail Passenger Miles </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Federal Railroad Administration available at: http://safetydata.fra.dot.gov/OfficeofSafety/</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RAIL_PM_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Rail Passenger Miles </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from data collected by U.S. Department of Transportation, Federal Railroad Administration available at: http://safetydata.fra.dot.gov/OfficeofSafety/</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">PETROLEUM</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Pipeline Movement (Thousands Of Barrels) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Energy Information Administration (EIA) available at: http://www.eia.gov/petroleum/supply/monthly/ (Table 58); http://tonto.eia.doe.gov/dnav/pet/pet_crd_crpdn_adc_mbbl_m.htm (Alaska)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">PETROLEUM_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Pipeline Movement (Thousands Of Barrels) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from data collected by U.S. Energy Information Administration (EIA) available at: http://www.eia.gov/petroleum/supply/monthly/ (Table 58); http://tonto.eia.doe.gov/dnav/pet/pet_crd_crpdn_adc_mbbl_m.htm (Alaska)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">NATURAL_GAS</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Natural Gas Consumption (Billion Cubic Feet) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Energy Information Administration (EIA) available at: http://www.eia.gov/dnav/ng/hist/n9140us2m.htm; http://www.eia.doe.gov/emeu/steo/pub/contents.html (forecast)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">NATURAL_GAS_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Natural Gas Consumption (Billion Cubic Feet) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from data collected by U.S. Energy Information Administration (EIA) available at: http://www.eia.gov/dnav/ng/hist/n9140us2m.htm; http://www.eia.doe.gov/emeu/steo/pub/contents.html (forecast)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">TRUCK_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Truck Tonnage (Truck Tonnage Index) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from American Trucking Association Monthly Truck Tonnage Report</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">WATERBORNE</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Tonnage for Internal U.S. Waterways (Millions Of Short Tons) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Army Corps of Engineers, Waterborne Commerce Statistics Center, Internal U.S. Waterway Monthly Tonnage Indicators available at http://www.navigationdatacenter.us/wcsc/wcmthind.htm</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">WATERBORNE_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Tonnage for Internal U.S. Waterways (Millions Of Short Tons) </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from U.S. Army Corps of Engineers, Waterborne Commerce Statistics Center, Internal U.S. Waterway Monthly Tonnage Indicators available at http://www.navigationdatacenter.us/wcsc/wcmthind.htm</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">VMT</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Vehicle Miles Traveled (VMT)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Federal Highways Administration, Traffic Volumes and Trends http://www.fhwa.dot.gov/policyinformation/travel_monitoring/tvt.cfm</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">VMT_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Vehicle Miles Traveled (VMT)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from U.S. Department of Transportation, Federal Highways Administration, Traffic Volumes and Trends http://www.fhwa.dot.gov/policyinformation/travel_monitoring/tvt.cfm</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String" />
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM_D </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Available Seat Miles (ASMs) for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air Carrierr Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM_D_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Available Seat Miles (ASMs) for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air Carrier Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM_I</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Available Seat Miles (ASMs) for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air Carrierr Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">ASM_I_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Available Seat Miles (ASMs) for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air Carrier Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM_D </Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Revenue Passenger Miles (RPMs) for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air Carrierr Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM_D_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Revenue Passenger Miles (RPMs) for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air Carrier Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM_I</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Revenue Passenger Miles (RPMs) for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air Carrierr Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">RPM_I_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (long integer)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Revenue Passenger Miles (RPMs) for U.S. Air Carrier International, Scheduled Passenger Flights (Thousands)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air Carrier Traffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR_D</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Load Factor for U.S. Air Carrier Domestic International, Scheduled Passenger Flights (Percent)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR_D_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Load Factor for U.S. Air Carrier Domestic, Scheduled Passenger Flights (Percent)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier domestic, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR_I</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Load Factor for U.S. Air Carrier International, Scheduled Passenger Flights (Percent)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS), U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+         <Row ss:AutoFitHeight="1">
+            <Cell ss:StyleID="s16">
+               <Data ss:Type="String">LOAD_FACTOR_I_D11</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">numbers (double)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Seasonally-Adjusted Load Factor for U.S. Air Carrier International, Scheduled Passenger Flights (Percent)</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">U.S. Department of Transportation, Bureau of Transportation Statistics (BTS) calculation from BTS U.S. Air CarrierTraffic Statistics, http://www.rita.dot.gov/bts/acts</Data>
+            </Cell>
+            <Cell ss:StyleID="s62">
+               <Data ss:Type="String">Data from all U.S. air carrier international, scheduled passenger flights   </Data>
+            </Cell>
+         </Row>
+      </Table>
+   </Worksheet>
+</Workbook>
