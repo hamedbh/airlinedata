@@ -4,27 +4,67 @@ author: "Hamed Bastan-Hagh"
 date: "6 July 2016"
 output: html_document
 ---
+A step-by-step account of data work done for this analysis of airline data.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+Data were not available via URL, so the files were downloaded on 7 Jul 2016 at 
+11:09. Changed them to xlsx format. Now read them into memory
+```{r}
+library(xlsx)
+library(dplyr)
+library(lubridate)
+d <- read.xlsx("combinedenplane.xlsx", 1, startRow = 3, endRow = 199)
+dsum <- d %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_D11) %>% 
+    group_by(year) %>% 
+    filter(year != 2016) %>% 
+    summarise(total = sum(ENPLANE))
+dsum <- tbl_df(dsum)
+
+domd <- read.xlsx("domesticenplane.xlsx", 1, startRow = 3, endRow = 199)
+domsum <- domd %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_D_D11) %>% 
+    group_by(year) %>% 
+    filter(year != 2016) %>% 
+    summarise(domestic = sum(ENPLANE_D))
+domsum <- tbl_df(domsum)
+
+intd <- read.xlsx("intenplane.xlsx", 1, startRow = 3, endRow = 199)
+intsum <- intd %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_I_D11) %>% 
+    group_by(year) %>% 
+    filter(year != 2016) %>% 
+    summarise(intl = sum(ENPLANE_I))
+intsum <- tbl_df(intsum)
+
+airdata <- cbind(dsum, domdsum$domestic, intsum$intl)
+airdata <- tbl_df(airdata)
+names(airdata) <- c("year", "total", "domestic", "intl")
+airdata
 ```
 
-## R Markdown
+The totals are close to those from the MarketLine report, and the difference 
+are small enough that we can attribute this to methodology or adjustments that 
+MarketLine may have made based on their own information.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+However the numbers for international and domestic are very different: the BTS 
+numbers allocate much more of the total to domestic flights. One clue as to why 
+this might be comes from the instructions, which mention that "For the US and 
+Canada, transborder passengers departing from either country are considered as 
+part of the international segment". If the BTS allocate these to domestic that 
+might explain the discrepancy.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+Being unable to discern methodology from the BTS, I had to look at the full data 
+from the BTS for 2014, broken down for each route, to separate the Canada 
+traffic and check whether that accounts for the difference.
 
-```{r cars}
-summary(cars)
+NB. These data were also not available via URL, were downloaded at 12:15 on 7 Jul 
+2016.
+
+``` {r}
+d2 <- read.csv("T100data_2014.csv")
+
+
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
