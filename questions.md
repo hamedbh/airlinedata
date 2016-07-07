@@ -12,7 +12,9 @@ The data provided are part of the MarketLine Airlines report. The figures provid
 6. Based on the country statistics listed in Table 1, briefly comment in writing on the combined European airline market's volume in the years 2010-2015.
 
 The results should be presented in a short presentation (up to 10 minutes long). All sources used should be named and saved, methodology of the research explained and all calculation presented. 
+
 The presentation can be in any format of your choice. How you generated your answers is important so please leave any formulas used in the calculation of your results on the sheet. Should you not have access to excel then it will be available at the day of interview. 
+
 The airlines industry comprises passenger air transportation, including both scheduled and chartered, but excludes air freight transport. Industry volumes are defined as the total number of revenue passengers enplaned (departures) at all airports within the country or region, excluding transit passengers who arrive and depart on the same flight code. For the US and Canada, transborder passengers departing from either country are considered as part of the international segment. This avoids the double-counting of passengers. 													
 													
 													
