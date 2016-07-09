@@ -143,37 +143,34 @@ $(document).ready(function () {
 ## 
 ##     date</code></pre>
 <pre class="r"><code>d &lt;- read.xlsx(&quot;combinedenplane.xlsx&quot;, 1, startRow = 3, endRow = 199)
-d &lt;- d %&gt;% 
+dsum &lt;- d %&gt;% 
     mutate(year = year(OBS_DATE)) %&gt;% 
     select(year, OBS_DATE:ENPLANE_D11) %&gt;% 
     group_by(year) %&gt;% 
-    filter(year != 2016) %&gt;% 
     summarise(total = sum(ENPLANE))
-d &lt;- tbl_df(d)
+dsum &lt;- tbl_df(dsum)
 
 domd &lt;- read.xlsx(&quot;domesticenplane.xlsx&quot;, 1, startRow = 3, endRow = 199)
-domd &lt;- domd %&gt;% 
+domsum &lt;- domd %&gt;% 
     mutate(year = year(OBS_DATE)) %&gt;% 
     select(year, OBS_DATE:ENPLANE_D_D11) %&gt;% 
     group_by(year) %&gt;% 
-    filter(year != 2016) %&gt;% 
     summarise(domestic = sum(ENPLANE_D))
-domd &lt;- tbl_df(domd)
+domsum &lt;- tbl_df(domsum)
 
 intd &lt;- read.xlsx(&quot;intenplane.xlsx&quot;, 1, startRow = 3, endRow = 199)
-intd &lt;- intd %&gt;% 
+intsum &lt;- intd %&gt;% 
     mutate(year = year(OBS_DATE)) %&gt;% 
     select(year, OBS_DATE:ENPLANE_I_D11) %&gt;% 
     group_by(year) %&gt;% 
-    filter(year != 2016) %&gt;% 
     summarise(intl = sum(ENPLANE_I))
-intd &lt;- tbl_df(intd)
+intsum &lt;- tbl_df(intsum)
 
-airdata &lt;- cbind(d, domd$domestic, intd$intl)
+airdata &lt;- cbind(dsum, domsum$domestic, intsum$intl)
 airdata &lt;- tbl_df(airdata)
 names(airdata) &lt;- c(&quot;year&quot;, &quot;total&quot;, &quot;domestic&quot;, &quot;intl&quot;)
 airdata</code></pre>
-<pre><code>## Source: local data frame [16 x 4]
+<pre><code>## Source: local data frame [17 x 4]
 ## 
 ##     year  total domestic   intl
 ##    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
@@ -192,7 +189,61 @@ airdata</code></pre>
 ## 13  2012 736699   642289  94410
 ## 14  2013 743170   645679  97491
 ## 15  2014 762710   662831  99879
-## 16  2015 798230   696027 102203</code></pre>
+## 16  2015 798230   696027 102203
+## 17  2016 189608   164931  24677</code></pre>
+<p>The totals for 2008-14 tally with those from the World Bank and the International Civil Aviation Organization, but differ slightly from those in the MarketLine report. The differences are small enough that we can attribute this to methodology or adjustments that MarketLine may have made based on their own information.</p>
+<p>However the numbers for international and domestic are very different: the BTS numbers allocate much more of the total in each year to domestic flights. One clue as to why this might be comes from the instructions, which mention that “For the US and Canada, transborder passengers departing from either country are considered as part of the international segment”. If the BTS allocate these to domestic that might explain the discrepancy.</p>
+<p>I called and emailed the BTS but was unable to speak with any of the librarians at the National Transport Library. Therefore we cannot discern whether this explains the discrepancy. So to ‘fix’ the data I will use the 2015 numbers from the BTS for total passengers and allocate the proportions of domestic and international passengers to fit those in the MarketLine data, which averages at 79% domestic, 21% international.</p>
+<pre class="r"><code>## Add columns with imputed values for domestic and international passengers
+## to the airdata table
+airdata2 &lt;- airdata %&gt;% 
+    mutate(newdom = total * 0.79, newintl = total * 0.21) %&gt;% 
+    select(year, total, newdom, newintl)
+airdata2</code></pre>
+<pre><code>## Source: local data frame [17 x 4]
+## 
+##     year  total   newdom   newintl
+##    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1   2000 669282 528732.8 140549.22
+## 2   2001 625065 493801.4 131263.65
+## 3   2002 616173 486776.7 129396.33
+## 4   2003 647469 511500.5 135968.49
+## 5   2004 703692 555916.7 147775.32
+## 6   2005 738628 583516.1 155111.88
+## 7   2006 744721 588329.6 156391.41
+## 8   2007 769622 608001.4 161620.62
+## 9   2008 743312 587216.5 156095.52
+## 10  2009 703899 556080.2 147818.79
+## 11  2010 720497 569192.6 151304.37
+## 12  2011 730796 577328.8 153467.16
+## 13  2012 736699 581992.2 154706.79
+## 14  2013 743170 587104.3 156065.70
+## 15  2014 762710 602540.9 160169.10
+## 16  2015 798230 630601.7 167628.30
+## 17  2016 189608 149790.3  39817.68</code></pre>
+<p>We can also use the BTS data for the first quarter of 2016 to get a sense of the year-on-year growth vs. 2015.</p>
+<pre class="r"><code>d2015q1 &lt;- d %&gt;% 
+    mutate(year = year(OBS_DATE)) %&gt;% 
+    mutate(month = month(OBS_DATE)) %&gt;% 
+    select(year, month, OBS_DATE:ENPLANE) %&gt;% 
+    filter(year == 2015 &amp; month &lt;= 3) %&gt;% 
+    group_by(year) %&gt;% 
+    summarise(total = sum(ENPLANE))
+
+d2016q1 &lt;- d %&gt;% 
+    mutate(year = year(OBS_DATE)) %&gt;% 
+    mutate(month = month(OBS_DATE)) %&gt;% 
+    select(year, month, OBS_DATE:ENPLANE) %&gt;% 
+    filter(year == 2016) %&gt;% 
+    group_by(year) %&gt;% 
+    summarise(total = sum(ENPLANE))
+
+d2 &lt;- cbind(t(d2015q1), t(d2016q1))
+diff &lt;- d2[2, 2] / d2[2, 1]
+diff</code></pre>
+<pre><code>##    total 
+## 1.052542</code></pre>
+<p>That means we’ve seen a c. 5% year-on-year increase from 2015 to 2016, and could expect about 840.17 million passengers in 2016, of which c. 663.735 million would be domestic and 176.436 million would be international.</p>
 
 
 
