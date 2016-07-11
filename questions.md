@@ -1,5 +1,5 @@
 # Scope of analysis
-The data provided are part of the MarketLine Airlines report. The figures provided represent the total number of passengers carried on domestic and international flights in the US
+The data provided are part of a market research report. The figures provided represent the total number of passengers carried on domestic and international flights in the US
 
 ## Part A
 1. Conduct your own research in order to estimate the number of passengers for years 2015-2018. You must also provide data for the two segments: Domestic and International flights.
