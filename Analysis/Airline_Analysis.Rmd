@@ -1,0 +1,107 @@
+---
+title: "Airline Data Analysis"
+author: "Hamed Bastan-Hagh"
+date: "6 July 2016"
+output: pdf_document
+---
+A step-by-step account of data work done for this analysis of airline data.
+
+Data were not available via URL, so the files were downloaded on 7 Jul 2016 at 
+11:09. Changed them to xlsx format. Now read them into memory
+```{r}
+library(xlsx)
+library(dplyr)
+library(lubridate)
+d <- read.xlsx("combinedenplane.xlsx", 1, startRow = 3, endRow = 199)
+dsum <- d %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_D11) %>% 
+    group_by(year) %>% 
+    summarise(total = sum(ENPLANE))
+dsum <- tbl_df(dsum)
+
+domd <- read.xlsx("domesticenplane.xlsx", 1, startRow = 3, endRow = 199)
+domsum <- domd %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_D_D11) %>% 
+    group_by(year) %>% 
+    summarise(domestic = sum(ENPLANE_D))
+domsum <- tbl_df(domsum)
+
+intd <- read.xlsx("intenplane.xlsx", 1, startRow = 3, endRow = 199)
+intsum <- intd %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    select(year, OBS_DATE:ENPLANE_I_D11) %>% 
+    group_by(year) %>% 
+    summarise(intl = sum(ENPLANE_I))
+intsum <- tbl_df(intsum)
+
+airdata <- cbind(dsum, domsum$domestic, intsum$intl)
+airdata <- tbl_df(airdata)
+names(airdata) <- c("year", "total", "domestic", "intl")
+airdata
+```
+
+The totals for 2008-14 tally with those from the World Bank and the 
+International Civil Aviation Organization, but differ slightly from those in the
+MarketLine report. The differences are small enough that we can attribute this 
+to methodology or adjustments that MarketLine may have made based on their 
+own information. 
+
+However the numbers for international and domestic are very different: the BTS 
+numbers allocate much more of the total in each year to domestic flights. One 
+clue as to why this might be comes from the instructions, which mention that
+"For the US and Canada, transborder passengers departing from either country 
+are considered as part of the international segment". If the BTS allocate these
+to domestic that might explain the discrepancy.
+
+I exchanged emailed with a librarian at the BTS and confirmed that those flights
+are categorised as domestic in the BTS numbers, which seems to explains the 
+discrepancy. So to 'fix' the data I will use the 2015 numbers from the BTS for 
+total passengers, and then allocate the proportions of domestic and 
+international passengers to fit those in the MarketLine data, which averages at
+79% domestic, 21% international.
+
+``` {r}
+## Add columns with imputed values for domestic and international passengers
+## to the airdata table
+airdata2 <- airdata %>% 
+    mutate(newdom = total * 0.79, newintl = total * 0.21) %>% 
+    select(year, total, newdom, newintl)
+airdata2
+```
+
+We can also use the BTS data for the first quarter of 2016 to calculate the
+year-on-year growth vs. 2015.
+
+``` {r}
+d2015q1 <- d %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    mutate(month = month(OBS_DATE)) %>% 
+    select(year, month, OBS_DATE:ENPLANE) %>% 
+    filter(year == 2015 & month <= 3) %>% 
+    group_by(year) %>% 
+    summarise(total = sum(ENPLANE))
+
+d2016q1 <- d %>% 
+    mutate(year = year(OBS_DATE)) %>% 
+    mutate(month = month(OBS_DATE)) %>% 
+    select(year, month, OBS_DATE:ENPLANE) %>% 
+    filter(year == 2016) %>% 
+    group_by(year) %>% 
+    summarise(total = sum(ENPLANE))
+
+d2 <- cbind(t(d2015q1), t(d2016q1))
+diff <- d2[2, 2] / d2[2, 1]
+diff
+```
+
+That means we've seen a c. 5% year-on-year increase from 2015 to 2016, and could 
+expect about `r round(diff * airdata[16, 2] / 1000, 3)` million passengers in 
+2016, of which c. `r round(diff * airdata[16, 2] * .79 / 1000, 3)` million would
+be domestic and `r round(diff * airdata[16, 2] * .21 / 1000, 3)` million would
+be international.
+
+
+
+
