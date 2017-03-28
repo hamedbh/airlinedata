@@ -1,5 +1,7 @@
 # Analysis of US Airline Data 2008-2018
 
+This analysis was done for an interview in July 2016.
+
 Sources for data:
 
 - [Bureau of Transportation Statistics](http://www.rita.dot.gov/bts/)
