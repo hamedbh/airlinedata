@@ -7,9 +7,9 @@ The data provided are part of a market research report. The figures provided rep
 3. Please calculate growth rates and CAGR for 2014 - 2018 for the total volume figures and save the result in cell O25. Please present the total volume of the US Airlines industry over the years 2010-2018 on a graph generated using Excel.
 												
 ## Part B													
-4. Please calculate annual average number of passengers in every country over the 2010-2019 time period. (please save the formulas and results in column O)
-5. What was the percentage difference between the passenger volumes in France and Canada in 2015?
-6. Based on the country statistics listed in Table 1, briefly comment in writing on the combined European airline market's volume in the years 2010-2015.
+1. Please calculate annual average number of passengers in every country over the 2010-2019 time period. (please save the formulas and results in column O)
+2. What was the percentage difference between the passenger volumes in France and Canada in 2015?
+3. Based on the country statistics listed in Table 1, briefly comment in writing on the combined European airline market's volume in the years 2010-2015.
 
 The results should be presented in a short presentation (up to 10 minutes long). All sources used should be named and saved, methodology of the research explained and all calculation presented. 
 
